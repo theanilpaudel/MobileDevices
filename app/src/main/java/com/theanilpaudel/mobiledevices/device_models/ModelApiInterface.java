@@ -26,15 +26,18 @@ public interface ModelApiInterface {
 
     interface ModelsPresenter {
         void getBrands(int id);
+        void errorMessage(String message);
 
     }
 
     interface ModelsInteractor {
         void getBrands(int id);
 
+
     }
 
     interface ModelsListener {
         void takeBrandsList(List<Brand> modelList);
+        void errorMessage(String message);
     }
 }

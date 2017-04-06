@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Mobile Devices</string>
+    <string name="app_name">Mobile Devices Info</string>
+    <string name="test_device">7B3B13D2DF7DF371CDBA50C7003D9851</string>
+    <string name="admob_appid">ca-app-pub-7411073277117524~8721873699</string>
+    <string name="admob_banner">ca-app-pub-7411073277117524/1198606899</string>
+    <string name="admob_full_ad">ca-app-pub-7411073277117524/7105539690</string>
 </resources>

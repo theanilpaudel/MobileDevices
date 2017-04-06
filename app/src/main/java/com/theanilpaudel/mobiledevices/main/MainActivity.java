@@ -1,5 +1,6 @@
 package com.theanilpaudel.mobiledevices.main;
 
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -7,7 +8,11 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.theanilpaudel.mobiledevices.R;
 import com.theanilpaudel.mobiledevices.device_models.MainFragment;
 import com.theanilpaudel.mobiledevices.utils.Brand;
@@ -22,7 +27,10 @@ public class MainActivity extends AppCompatActivity implements MainApiInterface.
     TabLayout tabLayout;
     @BindView(R.id.tabanim_viewpager)
     ViewPager viewPager;
-
+    @BindView(R.id.adView2)
+    AdView adView;
+    @BindView(R.id.progree)
+    ProgressBar progressBar;
     MainPresImpl mainPres;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,21 +39,29 @@ public class MainActivity extends AppCompatActivity implements MainApiInterface.
         ButterKnife.bind(this);
         mainPres = new MainPresImpl(this);
         mainPres.getBrands();
+
+        AdRequest adRequest = new AdRequest.Builder()
+//                .addTestDevice(getResources().getString(R.string.test_device))
+                .build();
+        adView.loadAd(adRequest);
     }
 
     @Override
     public void showProgress() {
-
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override
     public void errorMessage(String message) {
-
+        hideProgress();
+        Snackbar snackbar = Snackbar
+                .make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG);
+        snackbar.show();
     }
 
     @Override

@@ -19,11 +19,18 @@ public class MainPresImpl implements MainApiInterface.MainPresenter,MainApiInter
 
     @Override
     public void getBrands() {
+        mainView.showProgress();
         mainInteractor.getBrands();
+    }
+
+    @Override
+    public void errorMessage(String message) {
+        mainView.errorMessage(message);
     }
 
     @Override
     public void takeBrandsList(List<Brand> brandList) {
         mainView.setBrands(brandList);
+        mainView.hideProgress();
     }
 }

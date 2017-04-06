@@ -44,14 +44,14 @@ public class MainModel implements MainApiInterface.MainInteractor {
                         if(responseCode==200){
                             mainListener.takeBrandsList(value.body());
                         }else{
-//                            genreListener.onErrorOccured(value.headers().get("message")); //value.message()
+                            mainListener.errorMessage("Error Occured");
                         }
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
-//                        genreListener.onErrorOccured(e.getMessage());
+                        mainListener.errorMessage("Error Occured");
                     }
 
                     @Override

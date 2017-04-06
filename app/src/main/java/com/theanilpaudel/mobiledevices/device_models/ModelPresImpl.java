@@ -19,11 +19,19 @@ public class ModelPresImpl implements ModelApiInterface.ModelsPresenter,ModelApi
 
     @Override
     public void getBrands(int id) {
+        modelsView.showProgress();
         modelsInteractor.getBrands(id);
     }
 
     @Override
+    public void errorMessage(String message) {
+        modelsView.errorMessage(message);
+    }
+
+
+    @Override
     public void takeBrandsList(List<Brand> modelList) {
         modelsView.setBrands(modelList);
+        modelsView.hideProgress();
     }
 }

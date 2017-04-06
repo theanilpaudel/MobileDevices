@@ -30,7 +30,7 @@ public interface MainApiInterface {
 
     interface MainPresenter {
         void getBrands();
-
+        void errorMessage(String message);
     }
 
     interface MainInteractor {
@@ -40,6 +40,7 @@ public interface MainApiInterface {
 
     interface MainListener {
         void takeBrandsList(List<Brand> brandList);
+        void errorMessage(String message);
     }
 
 }

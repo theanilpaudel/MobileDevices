@@ -45,14 +45,14 @@ public class ModelModel implements ModelApiInterface.ModelsInteractor {
                         if(responseCode==200){
                             modelsListener.takeBrandsList(value.body());
                         }else{
-//                            genreListener.onErrorOccured(value.headers().get("message")); //value.message()
+                            modelsListener.errorMessage("Error Occured"); //value.message()
                         }
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
-//                        genreListener.onErrorOccured(e.getMessage());
+                        modelsListener.errorMessage("Error Occured");
                     }
 
                     @Override
