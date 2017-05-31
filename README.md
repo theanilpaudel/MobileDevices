@@ -21,9 +21,6 @@ I am trying to follow the MVP pattern in this project.
 
 * **Anil Paudel** - *Initial work* - [theanilpaudel](https://github.com/theanilpaudel)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-
 ## Acknowledgments
 
 * Fonoapi
