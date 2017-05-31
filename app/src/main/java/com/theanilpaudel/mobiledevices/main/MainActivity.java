@@ -1,5 +1,8 @@
 package com.theanilpaudel.mobiledevices.main;
 
+import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -9,11 +12,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.theanilpaudel.mobiledevices.R;
+import com.theanilpaudel.mobiledevices.details.DeviceDetailActivity;
 import com.theanilpaudel.mobiledevices.device_models.MainFragment;
 import com.theanilpaudel.mobiledevices.utils.Brand;
 
@@ -23,6 +28,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements MainApiInterface.MainView{
+    @BindView(R.id.frameLayout)
+    FrameLayout frameLayout;
     @BindView(R.id.tabLayout)
     TabLayout tabLayout;
     @BindView(R.id.tabanim_viewpager)
@@ -31,19 +38,35 @@ public class MainActivity extends AppCompatActivity implements MainApiInterface.
     AdView adView;
     @BindView(R.id.progree)
     ProgressBar progressBar;
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
     MainPresImpl mainPres;
+    String myDevice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+
+
         mainPres = new MainPresImpl(this);
         mainPres.getBrands();
-
+        myDevice = android.os.Build.MODEL;
+        System.out.println("device name "+myDevice);
         AdRequest adRequest = new AdRequest.Builder()
 //                .addTestDevice(getResources().getString(R.string.test_device))
                 .build();
         adView.loadAd(adRequest);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, DeviceDetailActivity.class);
+                intent.putExtra("brand", myDevice);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

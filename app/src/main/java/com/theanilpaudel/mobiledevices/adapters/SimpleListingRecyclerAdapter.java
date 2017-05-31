@@ -70,7 +70,7 @@ public class SimpleListingRecyclerAdapter extends RecyclerView.Adapter<SimpleLis
 
             Timber.d("news_url in adapter %s",brandList.get(position).getID());
             Intent intent = new Intent(context, DeviceDetailActivity.class);
-            intent.putExtra("brand", brandList.get(position));
+            intent.putExtra("brand", brandList.get(position).getName());
             context.startActivity(intent);
 
         }

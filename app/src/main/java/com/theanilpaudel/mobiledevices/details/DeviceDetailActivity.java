@@ -1,11 +1,14 @@
 package com.theanilpaudel.mobiledevices.details;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
@@ -28,6 +31,8 @@ import butterknife.ButterKnife;
  */
 
 public class DeviceDetailActivity extends AppCompatActivity implements DetailApiInterface.DetailView {
+    @BindView(R.id.relativeLayout)
+    RelativeLayout relativeLayout;
     @BindView(R.id.mainLinear)
     LinearLayout linearLayout;
     @BindView(R.id.textView)
@@ -42,11 +47,19 @@ public class DeviceDetailActivity extends AppCompatActivity implements DetailApi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.device_activity);
         ButterKnife.bind(this);
-        Brand brand = getIntent().getParcelableExtra("brand");
+
+//        AnimationDrawable animationDrawable = (AnimationDrawable) relativeLayout.getBackground();
+//        animationDrawable.setEnterFadeDuration(2500);
+//        animationDrawable.setExitFadeDuration(5000);
+//        animationDrawable.start();
+
+        String brand = getIntent().getStringExtra("brand");
 
         detailPres = new DetailPresImpl(this);
-        detailPres.getBrands(brand.getName());
-
+        detailPres.getBrands(brand);
+        getSupportActionBar().setTitle(brand);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         AdRequest adRequest = new AdRequest.Builder()
 //                .addTestDevice(getResources().getString(R.string.test_device))
                 .build();
@@ -84,5 +97,17 @@ public class DeviceDetailActivity extends AppCompatActivity implements DetailApi
         }
 
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // this takes the user 'back', as if they pressed the left-facing triangle icon on the main android toolbar.
+                // if this doesn't work as desired, another possibility is to call `finish()` here.
+                super.onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

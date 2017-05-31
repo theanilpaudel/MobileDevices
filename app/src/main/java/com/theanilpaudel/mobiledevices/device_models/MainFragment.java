@@ -48,13 +48,13 @@ public class MainFragment extends Fragment implements ModelApiInterface.ModelsVi
 
     @Override
     public void showProgress() {
-progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
 
     }
 
     @Override
     public void hideProgress() {
-progressBar.setVisibility(View.GONE);
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override
