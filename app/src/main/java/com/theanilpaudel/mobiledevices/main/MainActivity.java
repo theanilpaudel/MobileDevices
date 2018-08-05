@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity implements MainApiInterface.
     TabLayout tabLayout;
     @BindView(R.id.tabanim_viewpager)
     ViewPager viewPager;
-    @BindView(R.id.adView2)
-    AdView adView;
+//    @BindView(R.id.adView2)
+//    AdView adView;
     @BindView(R.id.progree)
     ProgressBar progressBar;
     @BindView(R.id.fab)
@@ -54,10 +54,10 @@ public class MainActivity extends AppCompatActivity implements MainApiInterface.
         mainPres.getBrands();
         myDevice = android.os.Build.MODEL;
         System.out.println("device name "+myDevice);
-        AdRequest adRequest = new AdRequest.Builder()
-//                .addTestDevice(getResources().getString(R.string.test_device))
-                .build();
-        adView.loadAd(adRequest);
+//        AdRequest adRequest = new AdRequest.Builder()
+////                .addTestDevice(getResources().getString(R.string.test_device))
+//                .build();
+//        adView.loadAd(adRequest);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

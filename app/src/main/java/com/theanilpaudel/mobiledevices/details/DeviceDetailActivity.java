@@ -37,8 +37,8 @@ public class DeviceDetailActivity extends AppCompatActivity implements DetailApi
     LinearLayout linearLayout;
     @BindView(R.id.textView)
     TextView textView;
-    @BindView(R.id.adView2)
-    AdView adView;
+//    @BindView(R.id.adView2)
+//    AdView adView;
     DetailPresImpl detailPres;
     private InterstitialAd mInterstitialAd;
 
@@ -60,15 +60,15 @@ public class DeviceDetailActivity extends AppCompatActivity implements DetailApi
         getSupportActionBar().setTitle(brand);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        AdRequest adRequest = new AdRequest.Builder()
-//                .addTestDevice(getResources().getString(R.string.test_device))
-                .build();
-        adView.loadAd(adRequest);
-
-//        mInterstitialAd = new InterstitialAd(this);
-//        mInterstitialAd.setAdUnitId(getResources().getString(R.string.admob_full_ad));
-        FullScreenAd fullScreenAd = new FullScreenAd(this);
-        InterstitialAd mInterstitialAd = fullScreenAd.requestNewInterstitial(getResources().getString(R.string.admob_full_ad));
+//        AdRequest adRequest = new AdRequest.Builder()
+////                .addTestDevice(getResources().getString(R.string.test_device))
+//                .build();
+//        adView.loadAd(adRequest);
+//
+////        mInterstitialAd = new InterstitialAd(this);
+////        mInterstitialAd.setAdUnitId(getResources().getString(R.string.admob_full_ad));
+//        FullScreenAd fullScreenAd = new FullScreenAd(this);
+//        InterstitialAd mInterstitialAd = fullScreenAd.requestNewInterstitial(getResources().getString(R.string.admob_full_ad));
     }
 
     @Override
